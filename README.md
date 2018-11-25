@@ -1,2 +1,2 @@
 # dilo
-Web issue tracker
+Web based issue tracker
