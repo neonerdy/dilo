@@ -1,0 +1,75 @@
+-- Table: public.projects
+
+-- DROP TABLE public.projects;
+
+CREATE TABLE public.projects
+(
+    id uuid NOT NULL,
+    project_name character varying(50) COLLATE pg_catalog."default",
+    initial character varying(25) COLLATE pg_catalog."default",
+    description character varying(200) COLLATE pg_catalog."default",
+    created_date timestamp without time zone,
+    status character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT projects_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.projects
+    OWNER to postgres;
+
+
+
+-- Table: public.teams
+
+-- DROP TABLE public.teams;
+
+CREATE TABLE public.teams
+(
+    id uuid NOT NULL,
+    full_name character varying(25) COLLATE pg_catalog."default",
+    role character varying(15) COLLATE pg_catalog."default",
+    address character varying(50) COLLATE pg_catalog."default",
+    phone character varying(15) COLLATE pg_catalog."default",
+    email character varying(25) COLLATE pg_catalog."default",
+    CONSTRAINT teams_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.teams
+    OWNER to postgres;
+
+
+
+
+-- Table: public.workitems
+
+-- DROP TABLE public.workitems;
+
+CREATE TABLE public.workitems
+(
+    id uuid NOT NULL,
+    project_id uuid,
+    title character varying(150) COLLATE pg_catalog."default",
+    category character varying(10) COLLATE pg_catalog."default",
+    priority character varying(10) COLLATE pg_catalog."default",
+    assignee_id uuid,
+    description character varying(500) COLLATE pg_catalog."default",
+    status character varying(20) COLLATE pg_catalog."default",
+    created_date timestamp without time zone,
+    modified_date timestamp without time zone,
+    tracker character varying COLLATE pg_catalog."default",
+    CONSTRAINT workitems_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.workitems
+    OWNER to postgres;
