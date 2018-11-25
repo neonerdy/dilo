@@ -1,0 +1,83 @@
+@model Dilo.Models.WorkItem
+
+
+   <form asp-controller="WorkItem" asp-action="Update" class="col-xs-4">
+
+            <br>
+            <h3>Edit Work Item</h3>
+            <br>
+     
+            <div class="form-group">
+                <input type="hidden" asp-for="ID">
+                <input type="hidden" asp-for="CreatedDate">
+                
+                <label style="font-weight:normal">Project</label>
+                 <select class="form-control" asp-for="ProjectId" asp-items="ViewBag.Projects">
+                 </select>
+                 <span asp-validation-for="ProjectId" class="text-danger"></span>
+            </div>
+         
+
+             <div class="form-group">
+                <label style="font-weight:normal">Category</label>
+                <select class="form-control" asp-for="Category">
+                    <option value="">- Select Category -</option>
+                    <option value="Feature">Feature</option>
+                    <option value="Task">Task</option>
+                    <option value="Bug">Bug</option>
+                </select>
+                 <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <label style="font-weight:normal">Tracker</label>
+                <input type="text" class="form-control" asp-for="Tracker">
+                 <span asp-validation-for="Tracker" class="text-danger"></span>
+            </div>
+       
+            <div class="form-group">
+                <label style="font-weight:normal">Title</label>
+                <input type="text" class="form-control" asp-for="Title">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+         
+             <div class="form-group">
+                <label style="font-weight:normal">Priority</label>
+                <select class="form-control" asp-for="Priority">
+                    <option value="">- Select Priority -</option>
+                    <option value="Low">Low</option>
+                    <option value="Normal">Normal</option>
+                    <option value="High">High</option>
+                </select>
+                 <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+         
+           <div class="form-group">
+                <label style="font-weight:normal">Assignee</label>
+                <select class="form-control" asp-for="AssigneeId" asp-items="ViewBag.Assignee">
+                 </select>
+               <span asp-validation-for="AssigneeId" class="text-danger"></span>
+            </div>
+         
+           <div class="form-group">
+                <label style="font-weight:normal">Status</label>
+                <select class="form-control" asp-for="Status">
+                    <option value="">- Select Status -</option>
+                    <option value="New">New</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Closed">Closed</option>
+                </select>
+                 <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+              <label style="font-weight:normal">Description</label>
+                <textarea class="form-control" rows="3" asp-for="Description"></textarea>
+            </div>
+                    
+          
+            <br><br>
+             <button type="submit" class="btn btn-primary pull-left" >Update Work Item</button>
+       
+
+    </form>
+          

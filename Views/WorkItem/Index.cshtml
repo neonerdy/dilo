@@ -1,0 +1,57 @@
+@model IEnumerable<Dilo.Models.WorkItem>
+
+@{
+    var count = Model.Count();
+}
+
+
+<br>
+<h3>Work Items (@count)</h3>
+<h4>@ViewBag.ProjectName</h4>
+<h4>@ViewBag.Category</h4>
+<h4>@ViewBag.Search</h4>
+
+<br>
+   <table class="table table-hover">
+        <tbody>
+        <tr>
+            <th style="width:10%">CATEGORY</th>
+            <th style="width:10%">TRACKER</th>   
+            <th style="width:40%">TITLE</th>
+            <th style="width:10%">PRIORITY</th>
+            <th style="width:15%">ASSIGNEE</th>
+            <th style="width:5%">STATUS</th>
+            <th style="width:15%">DATE</th>   
+        
+        </tr>
+
+        @foreach(var w in Model)
+        {
+                var createdDate = w.CreatedDate.ToShortDateString();
+
+                var label = "";
+                if (w.Category == "Feature") {
+                    label = "label label-success";        
+                } 
+                else if (w.Category == "Task") {
+                    label = "label label-warning";
+                }
+                else if (w.Category == "Bug") {
+                    label = "label label-danger";
+                }
+            <tr>
+                <td><span class="@label" style="font-size:13px">@w.Category</span></td>
+                <td>@w.Tracker</td>
+                <td><a href="/WorkItem/Detail/@w.ID">@w.Title</a></td>
+                <td>@w.Priority</td>
+                <td>@w.Assignee.FullName</td>
+                <td>@w.Status</td>
+                <td>@createdDate</td>
+            </tr>
+        }
+        </tbody></table>
+        <br><br>
+
+<a href="/WorkItem/Add" class="btn btn-primary">Add Work Item</a>
+
+               

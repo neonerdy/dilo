@@ -1,0 +1,40 @@
+@model IEnumerable<Dilo.Models.Project>
+
+@{
+    var count = Model.Count();
+}
+
+
+<br>
+
+<h3>Projects (@count)</h3>
+<br>
+  <table class="table table-hover">
+    <tbody>
+        <tr>
+        <th>PROJECT NAME</th>
+        <th>INITIAL</th>
+        <th>CREATED DATE</th>
+        <th>DESCRIPTION</th>
+        <th>STATUS</th>
+        <th>ACTION</th>                                
+        </tr>
+
+      @foreach(var p in Model)
+      {
+        <tr>
+            <td><a href="/WorkItem/Project/@p.ID">@p.ProjectName</a></td>
+            <td>@p.Initial</td>
+            <td>@p.CreatedDate</td>
+            <td>@p.Description</td>
+            <td>@p.Status</td>
+            <td><a href="/Project/Edit/@p.ID">Edit</a> | <a href="/Project/Delete/@p.ID">Delete</a></td>
+        </tr>
+      }
+    
+      </tbody>
+      </table>
+
+    <br>
+
+<a href="/Project/Add" class="btn btn-primary">Add Project</a>
